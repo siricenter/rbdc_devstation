@@ -8,48 +8,25 @@ function install_deps()
 	echo "Installed deps";
 }
 
-function install_rvm()
+function setup_user()
 {
-	echo "Installing RVM";
-	curl -sSL https://get.rvm.io | bash -s stable;
-	source ~/.bash_profile
-	source ~/.profile
-	echo "Installed RVM";
+	su $_BOOTSTRAP_USER -c "./bootstrap/setup.sh" -l;
+	. ~/.bash_profile
+	. ~/.profile
 }
 
-function install_ruby()
+function run_install()
 {
-	echo "Installing ruby"
-	rvm install 2.0
-	echo "Installed ruby"
-}
-
-function install_chef()
-{
-	echo "Installing Chef & Bundler"
-	gem install --no-ri --no-rdoc bundler chef;
-	echo "Installed Chef & Bundler"
-}
-
-generate_ssh_key()
-{
-	if [ ! -d /root/.ssh ]; then
-		echo "Generating SSH key for root"
-		mkdir /root/.ssh
-		touch /root/.ssh/known_hosts
-		ssh-keygen -t rsa -N "" -F id_rsa;
-		echo "Generated SSH key for root"
-	fi
+	./install.rb;
 }
 
 function main()
 {
-	check_sudo;
+	#check_sudo;
+	#check_username $1;
 	#install_deps;
-	generate_ssh_key;
-	#install_rvm;
-	#install_ruby;
-	#install_chef;
+	#setup_user;
+	run_install;
 }
 
-main
+main $1;

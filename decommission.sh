@@ -10,22 +10,30 @@ function remove_deps()
 
 function remove_rvm()
 {
-	echo "Removing RVM"
+	echo "Removing RVM";
 	rvm implode;
 	echo "Removed RVM";
 }
 
 function delete_ssh_keys()
 {
-	echo "Removing root's SSH key"
-	rm -rf /root/.ssh
-	echo "Removed root's SSH key"
+	echo "Removing root's SSH key";
+	rm -rf /root/.ssh;
+	echo "Removed root's SSH key";
+}
+
+function remove_cookbooks()
+{
+	echo "Removing cookbooks";
+	rm -rf cookbooks;
+	echo "Removed cookbooks";
 }
 
 main()
 {
 	check_sudo;
 	delete_ssh_keys;
+	remove_cookbooks;
 	#remove_rvm;
 	#remove_deps;
 }

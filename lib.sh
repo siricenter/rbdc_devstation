@@ -9,3 +9,15 @@ function check_sudo()
 	fi
 }
 
+function check_username()
+{
+	if [ $# -eq 0 ]; then
+		echo "No username specified";
+		>&2 echo "Script requires a username to be passed in";
+		exit 1;
+	else
+		export global _BOOTSTRAP_USER=$1;
+		return;
+	fi
+}
+
