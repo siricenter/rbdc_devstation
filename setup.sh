@@ -29,7 +29,7 @@ function generate_ssh_key()
 
 function run_install()
 {
-	./bootstrap/install.rb
+	./rbdc_devstation/install.rb
 }
 
 function main()

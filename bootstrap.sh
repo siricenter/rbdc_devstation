@@ -10,9 +10,11 @@ function install_deps()
 
 function setup_user()
 {
-	su $_BOOTSTRAP_USER -c "./bootstrap/setup.sh" -l;
-	. ~/.bash_profile
-	. ~/.profile
+	su $_BOOTSTRAP_USER -c "./rbdc_devstation/setup.sh" -l;
+	if [ -d ~/.bash_profile ]; then
+		. ~/.bash_profile
+		. ~/.profile
+	fi
 }
 
 function main()
