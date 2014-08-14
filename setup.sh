@@ -12,7 +12,7 @@ function install_rvm()
 function install_ruby()
 {
 	echo "Installing ruby";
-	rvm install 2.0;
+	rvm install ruby;
 	. ~/.bash_profile;
 	. ~/.profile;
 	echo "Installed ruby";
@@ -35,7 +35,7 @@ function run_install()
 function main()
 {
 	cd ~;
-	generate_ssh_key;
+	#generate_ssh_key;
 	install_rvm;
 	install_ruby;
 	run_install;
