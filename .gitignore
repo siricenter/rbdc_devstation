@@ -7,6 +7,8 @@
 pkg/
 berks-cookbooks/
 
+.out
+.pid
 # Berkshelf
 .vagrant
 /cookbooks
