@@ -17,9 +17,9 @@ function setup_user()
 
 function main()
 {
-	#check_sudo;
-	#check_username $1;
-	#install_deps;
+	check_sudo;
+	check_username $1;
+	install_deps;
 	setup_user;
 }
 

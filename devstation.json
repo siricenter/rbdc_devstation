@@ -1,7 +1,26 @@
 {
+	"tmux" : {
+		"version" : "1.8",
+		"install_method" : "source"
+	},
+
+	"devenvset" : {
+		"owner" : "cjpoll",
+		"group" : "developers",
+		"git" : {
+			"username" : "Cody Poll",
+			"email" : "CJPoll@gmail.com",
+			"cache_credentials" : "3600"
+		}
+	},
+
 	"run_list" : [
 		"recipe[apt]", 
+		"recipe[build-essential]",
+		"recipe[tmux]",
 		"recipe[postgresql]", 
-		"recipe[vim_chef::source]
+		"recipe[mysql]",
+		"recipe[vim_chef::source]"
+		"recipe[devenvset]",
 	]
 }

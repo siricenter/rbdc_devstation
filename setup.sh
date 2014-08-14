@@ -36,8 +36,8 @@ function main()
 {
 	cd ~;
 	generate_ssh_key;
-	#install_rvm;
-	#install_ruby;
+	install_rvm;
+	install_ruby;
 	run_install;
 }
 
