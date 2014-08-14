@@ -13,8 +13,6 @@ function install_ruby()
 	source "$HOME/.rvm/scripts/rvm";
 	rvm requirements;
 	rvm install ruby;
-	. ~/.bash_profile;
-	. ~/.profile;
 	echo "Installed ruby";
 }
 
