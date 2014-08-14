@@ -3,6 +3,7 @@
 function install_rvm()
 {
 	echo "Installing RVM";
+	cd $HOME;
 	curl -sSL https://get.rvm.io | bash -s stable;
 	echo "Installed RVM";
 }
@@ -10,8 +11,8 @@ function install_rvm()
 function install_ruby()
 {
 	echo "Installing ruby";
-	source "$HOME/.rvm/scripts/rvm";
-	rvm requirements;
+	cd $HOME;
+	source "$HOME/.bash_profile";
 	rvm install ruby;
 	echo "Installed ruby";
 }
@@ -25,9 +26,20 @@ function generate_ssh_key()
 	fi
 }
 
-function run_install()
+function install_gems()
 {
-	./rbdc_devstation/install.rb
+	echo 'Installing Gems';
+	cd $HOME/rbdc_devstation;
+	bundle install;
+	echo 'Installed Gems';
+}
+
+function run_berkshelf()
+{
+	echo 'Installing dependency cookbooks';
+	cd $HOME/rbdc_devstation;
+	berks install;
+	echo 'Installed dependency cookbooks';
 }
 
 function main()
@@ -36,7 +48,8 @@ function main()
 	#generate_ssh_key;
 	install_rvm;
 	install_ruby;
-	run_install;
+	install_gems;
+	run_berkshelf;
 }
 
 main;

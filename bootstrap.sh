@@ -1,28 +1,44 @@
 #! /usr/bin/env bash
+
 source "./lib.sh";
+
+function install_gecode()
+{
+	cd "$HOME/rbdc_devstation";
+
+	if [ ! -f gecode-3.7.3.tar.gz ]; then
+		curl -o gecode-3.7.3.tar.gz http://www.gecode.org/download/gecode-3.7.3.tar.gz
+	fi
+
+	if [ ! -d gecode-3.7.3 ]; then
+		tar -xvf gecode-3.7.3.tar.gz;
+		cd gecode-3.7.3;
+		./configure && \
+		make && \
+		sudo make install;
+	fi
+}
 
 function install_deps()
 {
 	echo "Installing deps";
-	apt-get install -y git curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties;
+	#sudo apt-get update;
+	#sudo apt-get install -y git curl libgecodegist36;
+	install_gecode;
+	export global USE_SYSTEM_GECODE=1;
 	echo "Installed deps";
 }
 
 function setup_user()
 {
-	su $_BOOTSTRAP_USER -l -c "./rbdc_devstation/setup.sh";
-	if [ -d ~/.bash_profile ]; then
-		. ~/.bash_profile
-		. ~/.profile
-	fi
+	./setup.sh $1;
 }
 
 function main()
 {
-	check_sudo;
 	check_username $1;
-	install_deps;
-	setup_user;
+	#install_deps;
+	setup_user $1;
 }
 
 main $1;
