@@ -10,7 +10,7 @@ function install_rvm()
 function install_ruby()
 {
 	echo "Installing ruby";
-	source "%HOME/.rvm/scripts/rvm";
+	source "$HOME/.rvm/scripts/rvm";
 	rvm requirements;
 	rvm install ruby;
 	. ~/.bash_profile;
