@@ -5,6 +5,7 @@
 .*.sw[a-z]
 *.un~
 pkg/
+berks-cookbooks/
 
 # Berkshelf
 .vagrant

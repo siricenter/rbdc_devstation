@@ -3,7 +3,6 @@
 function install_rvm()
 {
 	echo "Installing RVM";
-	echo "WHOAMI? $(whoami)";
 	curl -sSL https://get.rvm.io | bash -s stable;
 	source ~/.bash_profile;
 	source ~/.profile;
@@ -28,12 +27,18 @@ function generate_ssh_key()
 	fi
 }
 
+function run_install()
+{
+	./bootstrap/install.rb
+}
+
 function main()
 {
 	cd ~;
 	generate_ssh_key;
-	install_rvm;
-	install_ruby;
+	#install_rvm;
+	#install_ruby;
+	run_install;
 }
 
 main;

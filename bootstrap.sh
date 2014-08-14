@@ -15,18 +15,12 @@ function setup_user()
 	. ~/.profile
 }
 
-function run_install()
-{
-	./install.rb;
-}
-
 function main()
 {
 	#check_sudo;
 	#check_username $1;
 	#install_deps;
-	#setup_user;
-	run_install;
+	setup_user;
 }
 
 main $1;
