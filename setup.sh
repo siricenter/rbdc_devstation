@@ -4,14 +4,14 @@ function install_rvm()
 {
 	echo "Installing RVM";
 	curl -sSL https://get.rvm.io | bash -s stable;
-	source ~/.bash_profile;
-	source ~/.profile;
 	echo "Installed RVM";
 }
 
 function install_ruby()
 {
 	echo "Installing ruby";
+	source "%HOME/.rvm/scripts/rvm";
+	rvm requirements;
 	rvm install ruby;
 	. ~/.bash_profile;
 	. ~/.profile;
