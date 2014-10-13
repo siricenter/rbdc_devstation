@@ -42,14 +42,23 @@ function run_berkshelf()
 	echo 'Installed dependency cookbooks';
 }
 
+function run_chef()
+{
+	echo "Running Chef";
+	cd ~/rbdc_devstation; 
+	chef-solo -j devstation.json -c chef.rb;
+	echo "Chef finished running";
+}
+
 function main()
 {
 	cd ~;
-	#generate_ssh_key;
+	generate_ssh_key;
 	install_rvm;
 	install_ruby;
 	install_gems;
 	run_berkshelf;
+	run_chef;
 }
 
 main;

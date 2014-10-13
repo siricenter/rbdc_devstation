@@ -20,7 +20,7 @@
 		"recipe[tmux]",
 		"recipe[postgresql]", 
 		"recipe[mysql]",
-		"recipe[vim_chef::source]"
-		"recipe[devenvset]",
+		"recipe[vim_chef::source]",
+		"recipe[devenvset]"
 	]
 }
