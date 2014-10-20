@@ -14,12 +14,17 @@
 		}
 	},
 
+	"vim" : {
+		"version" : "7-3-584"
+	},
+
 	"run_list" : [
 		"recipe[apt]", 
 		"recipe[build-essential]",
 		"recipe[tmux]",
 		"recipe[postgresql]", 
-		"recipe[mysql]",
+		"recipe[mysql::server]",
+		"recipe[mysql::client]",
 		"recipe[vim_chef::source]",
 		"recipe[devenvset]"
 	]

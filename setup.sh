@@ -42,17 +42,10 @@ function run_berkshelf()
 	echo 'Installed dependency cookbooks';
 }
 
-function package_berkshelf()
+function vendor_berkshelf()
 {
 	echo "Packaging cookbooks";
-	if [ ! -d "berks-cookbooks" ]; then
-		echo "Creating cookbook dir";
-		mkdir "berks-cookbooks";
-		echo "Created cookbook dir";
-	fi
-
-	berks package "berks-cookbooks";
-
+	berks vendor "berks-cookbooks";
 	echo "Packaged cookbooks";
 }
 
@@ -60,7 +53,7 @@ function run_chef()
 {
 	echo "Running Chef";
 	cd ~/rbdc_devstation; 
-	chef-solo -j devstation.json -c chef.rb;
+	sudo chef-solo -j devstation.json -c chef.rb;
 	echo "Chef finished running";
 }
 
@@ -72,7 +65,7 @@ function main()
 	install_ruby;
 	install_gems;
 	run_berkshelf;
-	package_berkshelf;
+	vendor_berkshelf;	
 	run_chef;
 }
 

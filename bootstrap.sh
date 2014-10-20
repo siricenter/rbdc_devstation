@@ -35,13 +35,13 @@ function install_deps() {
 
 function setup_user() {
 	cd ~/rbdc_devstation;
-	./setup.sh $1;
+	su root './setup.sh $1;';
 }
 
 function main() {
 	check_username $1;
 	install_deps;
-	setup_user $1;
+	setup_user;
 }
 
 main $1;
