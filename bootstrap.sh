@@ -9,6 +9,8 @@ function install_gecode() {
 		echo "Downloading gecode";
 		curl -o gecode-3.7.3.tar.gz http://www.gecode.org/download/gecode-3.7.3.tar.gz
 		echo "Downloaded gecode";
+	else
+		echo "gecoe already downloaded";
 	fi
 
 	if [ ! -d gecode-3.7.3 ]; then
@@ -17,6 +19,8 @@ function install_gecode() {
 		./configure && \
 		make && \
 		sudo make install;
+	else
+		echo "gecode already installed";
 	fi
 }
 
@@ -24,7 +28,7 @@ function install_deps() {
 	echo "Installing deps";
 	sudo apt-get update;
 	sudo apt-get install -y git curl libgecodegist30;
-	install_gecode;
+	#install_gecode;
 	export global USE_SYSTEM_GECODE=1;
 	echo "Installed deps";
 }
