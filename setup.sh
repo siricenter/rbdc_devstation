@@ -42,6 +42,20 @@ function run_berkshelf()
 	echo 'Installed dependency cookbooks';
 }
 
+function package_berkshelf()
+{
+	echo "Packaging cookbooks";
+	if [ ! -d "berks-cookbooks" ]; then
+		echo "Creating cookbook dir";
+		mkdir "berks-cookbooks";
+		echo "Created cookbook dir";
+	fi
+
+	berks package "berks-cookbooks";
+
+	echo "Packaged cookbooks";
+}
+
 function run_chef()
 {
 	echo "Running Chef";
@@ -58,6 +72,7 @@ function main()
 	install_ruby;
 	install_gems;
 	run_berkshelf;
+	package_berkshelf;
 	run_chef;
 }
 
