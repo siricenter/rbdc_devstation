@@ -12,8 +12,13 @@ function install_ruby()
 {
 	echo "Installing ruby";
 	cd $HOME;
-	source "$HOME/.bash_profile";
-	rvm install ruby;
+	apt-get install ruby1.9.3;
+	#rvm install ruby;
+	#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"; # Load RVM into a shell session *as a function*
+	#rvm use 2.1.3;
+	#rvm gemset create chef;
+	#rvm gemset use chef;
+	gem install bundler;
 	echo "Installed ruby";
 }
 
@@ -53,7 +58,7 @@ function run_chef()
 {
 	echo "Running Chef";
 	cd ~/rbdc_devstation; 
-	sudo chef-solo -j devstation.json -c chef.rb;
+	chef-solo -j devstation.json -c chef.rb;
 	echo "Chef finished running";
 }
 
@@ -61,7 +66,7 @@ function main()
 {
 	cd ~;
 	generate_ssh_key;
-	install_rvm;
+	#install_rvm;
 	install_ruby;
 	install_gems;
 	run_berkshelf;
